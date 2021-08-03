@@ -29,7 +29,7 @@ export default class TodoForm extends React.Component {
             <form>
                 <input onChange={this.changeEvt} type='text' name='todo' />
                 <button onClick={this.addToDo}>Add Todo</button>
-                <button onClick={this.clearCompleted}>Clear Completed</button>
+                <button onClick={this.clearToDos}>Clear Completed</button>
             </form>
         )
     }

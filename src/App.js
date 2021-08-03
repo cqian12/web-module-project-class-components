@@ -1,7 +1,7 @@
 import React from 'react';
-import ToDo from './components/Todo';
 import TodoForm from './components/TodoForm';
 import ToDoList from './components/TodoList';
+import './components/Todo.css'
 
 const initToDos = [
   {
@@ -23,16 +23,19 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      toDos : initToDos
+      stuffToDo : initToDos
     }
   }
 
   completeTask = (id) => {
     this.setState({
-      toDos: this.state.toDos.map(todo => {
+      stuffToDo: this.state.stuffToDo.map(todo => {
         if (todo.id === id) {
-          return ({...todo,completed:true})
+          return ({
+            ...todo,
+            completed:!todo.completed})
         }
+        return todo
       })
     })
   }
@@ -45,13 +48,14 @@ class App extends React.Component {
     }
 
     this.setState({
-      toDos:[...this.state.toDos,newToDo]
+      stuffToDo:[...this.state.stuffToDo,newToDo]
     })
   }
 
   clearToDos = () => {
     this.setState({
-      ...this.state,toDos:this.state.toDos.filter(todo => {
+      ...this.state,
+      stuffToDo:this.state.stuffToDo.filter(todo => {
         return (todo.completed === false)
       })
     })
@@ -61,7 +65,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <ToDoList completeTask={this.completeTask} toDos={this.state.toDos} />
+        <ToDoList completeTask={this.completeTask} stuffToDo={this.state.stuffToDo} />
         <TodoForm addToDo={this.addToDo} clearToDos={this.clearToDos}/>
       </div>
     );

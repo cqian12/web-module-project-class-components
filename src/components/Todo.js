@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const ToDo = props => {
     const clickEvt = () => {
-        console.log(props.todo.task)
+        //console.log(props.todo.task)
         props.completeTask(props.todo.id)
     }
 
     return (
-        <div onClick={clickEvt}>
+        <div onClick={clickEvt} className={`${props.todo.completed ? 'completed': ''}`}>
             <p>{props.todo.task}</p>
         </div>
     )
